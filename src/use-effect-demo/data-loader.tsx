@@ -1,5 +1,18 @@
 import React, { useEffect, useState } from "react";
 
+const recordBox = {
+  display: "flex",
+  alignItems: "center",
+  border: "1px solid black",
+  padding: "10px",
+  marginBottom: "0.5rem"
+};
+
+const image = {
+  width: "50px",
+  marginRight: "0.5rem"
+};
+
 export const DataLoader = () => {
   const [photos, loadPhotos] = useState({
     data: [],
@@ -15,15 +28,12 @@ export const DataLoader = () => {
       .catch(err => loadPhotos(() => ({ data: [], err })));
   }, [albumId]);
 
-  useEffect(() => {
-    console.log(photos);
-  });
-
   return (
     <section>
       <h1>UseEffect hook demo</h1>
       <div>
         <input
+          style={{ marginBottom: "1rem" }}
           type="number"
           onChange={e => changeAlbumId((e.target.value as unknown) as number)}
           value={albumId}
@@ -31,9 +41,12 @@ export const DataLoader = () => {
       </div>
       {!photos.err &&
         photos.data.map((photo, idx) => (
-          <p key={idx}>
-            {photo.id} - {photo.title}
-          </p>
+          <div style={recordBox}>
+            <img style={image} src={photo.url} alt="" />
+            <p key={idx} style={{ textAlign: "left" }}>
+              {photo.id} - {photo.title}
+            </p>
+          </div>
         ))}
     </section>
   );

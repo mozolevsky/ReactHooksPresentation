@@ -1,23 +1,34 @@
-import React, { useContext, memo } from "react";
+import React, { useContext } from "react";
 import { ThemeContext } from "./theme-context";
 import { UserContext } from "./user-context";
 
 const boxStyles = {
-  height: "200px",
+  height: "300px",
   display: "flex",
   justifyContent: "center",
-  alignItems: "center"
+  alignItems: "center",
+  flexDirection: "column"
 };
 
-export const UserCard = memo(() => {
+export const UserCard = props => {
   const theme = useContext(ThemeContext);
-  const user = useContext(UserContext);
+  const {
+    data: { img, name, role },
+    changeUser
+  } = useContext(UserContext);
+
+  const onClickHandle = () => {
+    changeUser(role);
+  };
 
   return (
     <div style={{ ...theme, ...boxStyles }}>
+      <div>
+        <img onClick={onClickHandle} src={img} width="100px" alt={name} />
+      </div>
       <p>
-        {user.name} - {user.role}
+        {name} - {role}
       </p>
     </div>
   );
-});
+};

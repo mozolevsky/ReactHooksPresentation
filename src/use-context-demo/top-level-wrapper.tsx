@@ -12,25 +12,31 @@ const themesMocks = [
   },
   {
     type: "night",
-    backgroundColor: "#833713",
+    backgroundColor: "black",
     color: "#BABACA"
   }
 ];
 
 const userInfoMockes = [
   {
-    name: "Toni Robinson",
-    role: "COACH"
+    name: "Toni Robins",
+    role: "COACH",
+    img: "https://poddmap.com/coverarts/5bd4d1c31edf070bd7712a8d/256x256.jpg"
   },
   {
-    name: "Miki Kazumi",
-    role: "QA"
+    name: "Barbra Streisand",
+    role: "ACTRESS",
+    img:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQql0Y5A0l34-C5SVi3UOZ3-7eV0nQ1D0rrfNA2Dh7LkZqz9mBu"
   }
 ];
 
 export const TopLevelWrapper = () => {
   const [currentTheme, setTheme] = useState(themesMocks[0]);
-  const [currentUser, setUser] = useState(userInfoMockes[0]);
+  const [currentUser, setUser] = useState({
+    data: userInfoMockes[0],
+    changeUser: role => null
+  });
 
   const changeTheme = () => {
     setTheme(
@@ -40,12 +46,13 @@ export const TopLevelWrapper = () => {
     );
   };
 
-  const changeUser = () => {
-    setUser(
-      currentUser.role === userInfoMockes[0].role
-        ? userInfoMockes[1]
-        : userInfoMockes[0]
-    );
+  const changeUser = role => {
+    const data =
+      typeof role === "string"
+        ? userInfoMockes.find(v => v.role !== role)
+        : userInfoMockes[Math.round(Math.random())];
+
+    setUser({ data, changeUser });
   };
 
   return (
@@ -61,7 +68,7 @@ export const TopLevelWrapper = () => {
       </Wrapper>
       <section style={{ marginTop: "2rem" }}>
         <button onClick={changeTheme}>Change theme</button>{" "}
-        <button onClick={changeUser}>Change user</button>
+        <button onClick={changeUser}>Coose random user</button>
       </section>
     </ThemeContext.Provider>
   );

@@ -1,6 +1,5 @@
-import React, { memo } from "react";
+import React from "react";
 
-export const Wrapper = memo(props => {
-  console.log("Wrapper rerendered", props);
+export const Wrapper = props => {
   return <div>{props.children}</div>;
-});
+};
