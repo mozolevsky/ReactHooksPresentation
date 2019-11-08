@@ -1,2 +1,0 @@
-# ReactHooksPresentation
-Created with CodeSandbox
