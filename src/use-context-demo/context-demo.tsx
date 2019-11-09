@@ -31,7 +31,7 @@ const userInfoMockes = [
   }
 ];
 
-export const TopLevelWrapper = () => {
+export const ContextDemo = () => {
   const [currentTheme, setTheme] = useState(themesMocks[0]);
   const [currentUser, setUser] = useState({
     data: userInfoMockes[0],

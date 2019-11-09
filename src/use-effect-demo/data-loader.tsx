@@ -41,9 +41,9 @@ export const DataLoader = () => {
       </div>
       {!photos.err &&
         photos.data.map((photo, idx) => (
-          <div style={recordBox}>
+          <div style={recordBox} key={idx}>
             <img style={image} src={photo.url} alt="" />
-            <p key={idx} style={{ textAlign: "left" }}>
+            <p style={{ textAlign: "left" }}>
               {photo.id} - {photo.title}
             </p>
           </div>
