@@ -7,7 +7,13 @@ const boxStyles = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  flexDirection: "column"
+  flexDirection: "column",
+  transition: "all 0.3s ease"
+};
+
+const imgStyles = {
+  width: "100px",
+  transition: "all 0.3s ease"
 };
 
 export const UserCard = props => {
@@ -24,7 +30,7 @@ export const UserCard = props => {
   return (
     <div style={{ ...theme, ...boxStyles }}>
       <div>
-        <img onClick={onClickHandle} src={img} width="100px" alt={name} />
+        <img onClick={onClickHandle} src={img} style={imgStyles} alt={name} />
       </div>
       <p>
         {name} - {role}

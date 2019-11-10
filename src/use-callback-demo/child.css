@@ -1,0 +1,26 @@
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: all 600ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 100ms ease-in;
+}
+
+.box {
+  margin: 0 auto;
+  width: 400px;
+  height: 200px;
+  background: lightblue;
+  border: 1px solid black;
+  transition: border 0.5s linear;
+}

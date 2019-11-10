@@ -14,17 +14,16 @@ const button = {
 };
 
 export const SimpleCalc = props => {
-  const [inputValue, changeInput] = useState(null);
+  const [input, changeInput] = useState(null);
   const [state, dispatch] = useReducer(calcReducer, { result: 0 });
 
   const handleInputChange = e => changeInput(Number(e.target.value));
-  const handleBtnClick = e =>
-    dispatch({ ...e.target.dataset, number: inputValue });
+  const handleBtnClick = e => dispatch({ ...e.target.dataset, input });
 
   return (
     <div>
-      <p>Total: {state.result}</p>
-      <input type="text" value={inputValue} onChange={handleInputChange} />
+      <p>Total: {Math.round(state.result)}</p>
+      <input type="text" value={input} onChange={handleInputChange} />
       <section style={button.section} onClick={handleBtnClick}>
         {["+", "-", "*", "/"].map((v, idx) => (
           <button data-type={v} key={idx} style={button.btn}>
