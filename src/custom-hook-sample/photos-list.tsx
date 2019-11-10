@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useFetch } from "./useFetch";
 
 const recordBox = {
   display: "flex",
@@ -13,26 +14,17 @@ const image = {
   marginRight: "0.5rem"
 };
 
-export const DataLoader = () => {
-  const [photos, loadInfo] = useState({
-    data: [],
-    err: undefined
-  });
-
+export const Photos = () => {
   const [albumId, changeAlbumId] = useState(0);
+  const url = `https://jsonplaceholder.typicode.com/photos?albumId=${albumId}`;
 
-  useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/photos?albumId=${albumId}`)
-      .then(res => res.json())
-      .then(res => loadInfo(() => ({ data: res, err: undefined })))
-      .catch(err => loadInfo(() => ({ data: [], err })));
-  }, [albumId]);
+  const loadedInfo = useFetch(url);
 
-  const handleAlbumId = e => changeAlbumId(e.target.value);
+  const handleAlbumId = e => changeAlbumId(e.target.value || 0);
 
   return (
     <section>
-      <h1>UseEffect hook demo</h1>
+      <h1>useFetch custom hook demo 2</h1>
       <div>
         <input
           style={{ marginBottom: "1rem" }}
@@ -41,8 +33,8 @@ export const DataLoader = () => {
           value={albumId}
         />
       </div>
-      {!photos.err &&
-        photos.data.map((photo, idx) => (
+      {!loadedInfo.err &&
+        loadedInfo.data.map((photo, idx) => (
           <div style={recordBox} key={idx}>
             <img style={image} src={photo.url} alt="" />
             <p style={{ textAlign: "left" }}>

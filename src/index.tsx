@@ -5,6 +5,8 @@ import { DataLoader } from "./use-effect-demo/data-loader";
 import { ContextDemo } from "./use-context-demo/context-demo";
 import { SimpleCalc } from "./use-reducer-demo/calc";
 import { Clock } from "./use-callback-demo/clock";
+import { Albums } from "./custom-hook-sample/albums-list";
+import { Photos } from "./custom-hook-sample/photos-list";
 
 import "./styles.css";
 
@@ -15,7 +17,9 @@ function App() {
       {/* <DataLoader /> */}
       {/* <ContextDemo /> */}
       {/* <SimpleCalc /> */}
-      <Clock />
+      {/* <Clock /> */}
+      <Albums />
+      {/* <Photos /> */}
     </div>
   );
 }
