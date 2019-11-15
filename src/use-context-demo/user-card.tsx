@@ -36,5 +36,12 @@ export const UserCard = props => {
         {name} - {role}
       </p>
     </div>
+    // <div>
+    //   <ThemeContext.Consumer>
+    //     {theme => (
+    //       <div style={{...theme, ...boxStyles}}>223</div>
+    //     )}
+    //   </ThemeContext.Consumer>
+    // </div>
   );
 };

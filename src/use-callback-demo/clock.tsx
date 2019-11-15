@@ -15,9 +15,7 @@ export const Clock = () => {
 
   const cb = () => null;
 
-  const memoizedClb = useCallback(() => {
-    cb();
-  }, [count]);
+  const memoizedClb = useCallback(cb, [count]);
 
   return (
     <div>

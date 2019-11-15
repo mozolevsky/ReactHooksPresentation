@@ -13,13 +13,14 @@ import "./styles.css";
 function App() {
   return (
     <div className="App">
+      <h4>React hooks</h4>
       {/* <Counter /> */}
       {/* <DataLoader /> */}
       {/* <ContextDemo /> */}
       {/* <SimpleCalc /> */}
       {/* <Clock /> */}
-      <Albums />
-      {/* <Photos /> */}
+      {/* <Albums />
+      <Photos /> */}
     </div>
   );
 }
